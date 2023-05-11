@@ -1,0 +1,23 @@
+{
+    "name": "dancos/cpf-cnpj-bundle",
+    "description": "Bundle para validação de CPF e CNPJ no Symfony",
+    "type": "symfony-bundle",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Dancos\\Bundle\\CpfCnpjBundle\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Dancos\\Bundle\\CpfCnpjBundle\\Tests\\": "tests/"
+        }
+    },
+    "require": {
+        "php": ">=8.2"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^10.1",
+        "symfony/validator": "^6.2"
+    }
+}
