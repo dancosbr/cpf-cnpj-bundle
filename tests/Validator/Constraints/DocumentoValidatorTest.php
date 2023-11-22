@@ -43,7 +43,7 @@ class DocumentoValidatorTest extends ConstraintValidatorTestCase
         $this->assertNoViolation();
     }
 
-    public function testEmptyStringIsInvalid()
+    public function testEmptyStringIsValid()
     {
         $this->validator->validate('', new Documento());
 
