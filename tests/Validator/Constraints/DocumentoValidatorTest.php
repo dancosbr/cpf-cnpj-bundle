@@ -36,51 +36,83 @@ class DocumentoValidatorTest extends ConstraintValidatorTestCase
         ];
     }
 
-    public function testNullIsInvalid()
+    public function testNullIsValid()
     {
         $this->validator->validate(null, new Documento());
 
-        $this->buildViolation('O documento informado precisa ter 11 ou 14 caracteres')
-            ->assertRaised();
+        $this->assertNoViolation();
     }
 
     public function testEmptyStringIsInvalid()
     {
         $this->validator->validate('', new Documento());
 
-        $this->buildViolation('O documento informado precisa ter 11 ou 14 caracteres')
-            ->assertRaised();
+        $this->assertNoViolation();
     }
 
     public function testArbitraryStringIsInvalid()
     {
-        $this->validator->validate('a', new Documento());
+        $documento = new Documento();
+        $this->validator->validate('a', $documento);
 
-        $this->buildViolation('O documento informado precisa ter 11 ou 14 caracteres')
+        $this->buildViolation($documento->messageSize)
             ->assertRaised();
     }
 
     public function testArbitraryIntegerIsInvalid()
     {
-        $this->validator->validate(123, new Documento());
+        $documento = new Documento();
+        $this->validator->validate(123, $documento);
 
-        $this->buildViolation('O documento informado precisa ter 11 ou 14 caracteres')
+        $this->buildViolation($documento->messageSize)
             ->assertRaised();
     }
 
     public function testWrongCpfIsInvalid()
     {
-        $this->validator->validate('07277482031', new Documento());
+        $documento = new Documento();
+        $this->validator->validate('07277482031', $documento);
 
-        $this->buildViolation('O documento informado não é um CPF válido')
+        $this->buildViolation($documento->messageCpf)
             ->assertRaised();
     }
 
     public function testWrongCnpjIsInvalid()
     {
-        $this->validator->validate('11.885.649/0001-54', new Documento());
+        $documento = new Documento();
+        $this->validator->validate('11.885.649/0001-54', $documento);
 
-        $this->buildViolation('O documento informado não é um CNPJ válido')
+        $this->buildViolation($documento->messageCnpj)
+            ->assertRaised();
+    }
+
+    public function testSizeMessageCanBeCustomized()
+    {
+        $documento = new Documento();
+        $documento->messageSize = 'myMessageSize';
+        $this->validator->validate('a', $documento);
+
+        $this->buildViolation('myMessageSize')
+            ->assertRaised();
+    }
+
+    public function testCpfMessageCanBeCustomized()
+    {
+        $documento = new Documento();
+        $documento->messageCpf = 'myMessageCpf';
+        $this->validator->validate('07277482031', $documento);
+
+        $this->buildViolation('myMessageCpf')
+            ->assertRaised();
+    }
+
+    public function testCnpjMessageCanBeCustomized()
+    {
+        $documento = new Documento();
+        $documento->messageCnpj = 'myMessageCnpj';
+        $this->validator->validate('11.885.649/0001-54', $documento);
+
+        $this->buildViolation('myMessageCnpj')
             ->assertRaised();
     }
 }
