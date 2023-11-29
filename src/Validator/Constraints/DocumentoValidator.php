@@ -10,10 +10,12 @@ use Symfony\Component\Validator\Exception\UnexpectedTypeException;
 
 class DocumentoValidator extends ConstraintValidator
 {
-    public function validate(mixed $value, Constraint $constraint)
-    {
-        if (null === $value) {
-            $this->context->buildViolation($constraint->messageSize)->addViolation();
+    public function validate(
+        #[\SensitiveParameter]
+        mixed $value,
+        Constraint $constraint
+    ) {
+        if (null === $value || '' === $value) {
             return;
         }
 
@@ -23,22 +25,24 @@ class DocumentoValidator extends ConstraintValidator
 
         $value = preg_replace('/[^0-9]/', '', (string) $value);
 
-        if (strlen((string) $value) !== 11 && strlen((string) $value) !== 14 && isset($constraint->messageSize)) {
+        if (strlen($value) !== 11 && strlen($value) !== 14 && isset($constraint->messageSize)) {
             $this->context->buildViolation($constraint->messageSize)->addViolation();
         }
 
-        if (strlen((string) $value) === 14 && !$this->validateCnpj($value)) {
+        if (strlen($value) === 14 && !$this->validateCnpj($value)) {
             $this->context->buildViolation($constraint->messageCnpj)->addViolation();
         }
 
-        if (strlen((string) $value) === 11 && !$this->validateCpf($value)) {
+        if (strlen($value) === 11 && !$this->validateCpf($value)) {
             $this->context->buildViolation($constraint->messageCpf)->addViolation();
         }
     }
 
     // code from Respect\Validation
-    private function validateCnpj($input): bool
-    {
+    private function validateCnpj(
+        #[\SensitiveParameter]
+        string $input
+    ): bool {
         if (!is_scalar($input)) {
             return false;
         }
@@ -85,8 +89,10 @@ class DocumentoValidator extends ConstraintValidator
     }
 
     // code from Respect\Validation
-    private function validateCpf($input): bool
-    {
+    private function validateCpf(
+        #[\SensitiveParameter]
+        string $input
+    ): bool {
         // Code ported from jsfromhell.com
         $c = preg_replace('/\D/', '', $input);
 

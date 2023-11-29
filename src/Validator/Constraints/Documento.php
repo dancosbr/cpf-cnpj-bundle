@@ -13,7 +13,7 @@ class Documento extends Constraint
     public string $messageCnpj = 'O documento informado não é um CNPJ válido';
     public string $messageCpf = 'O documento informado não é um CPF válido';
 
-    public function validatedBy()
+    public function validatedBy(): string
     {
         return static::class . 'Validator';
     }
