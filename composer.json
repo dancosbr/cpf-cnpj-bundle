@@ -15,12 +15,14 @@
     },
     "require": {
         "php": ">=8.2",
-        "ext-intl": "*"
+        "ext-intl": "*",
+        "symfony/validator": "^6.0|^7.0",
+        "symfony/dependency-injection": "^6.0|^7.0",
+        "symfony/framework-bundle": "^6.0|^7.0"
     },
     "require-dev": {
         "ext-mbstring": "*",
-        "phpunit/phpunit": "^10.1",
-        "symfony/validator": "^6.2"
+        "phpunit/phpunit": "^10.1"
     },
     "config": {
         "sort-packages": true
