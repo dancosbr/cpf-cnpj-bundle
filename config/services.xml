@@ -7,6 +7,9 @@
         <service id="cpfcnpjbunle.cpfcnpjutil" class="Dancos\Bundle\CpfCnpjBundle\Util\CpfCnpjUtil">
             <!-- Add any constructor arguments or method calls here -->
         </service>
+        <service id="cpfcnpjbunle.cpfcnpjvalidator" class="Dancos\Bundle\CpfCnpjBundle\Validator\CpfCnpjValidator">
+            <argument type="service" id="cpfcnpjbunle.cpfcnpjutil" />
+        </service>
     </services>
 
 </container>
