@@ -1,5 +1,5 @@
 {
-    "name": "dancos/cpf-cnpj-bundle",
+    "name": "lecneri/cpf-cnpj-bundle",
     "description": "Bundle para validação de CPF e CNPJ no Symfony",
     "type": "symfony-bundle",
     "license": "MIT",
@@ -22,7 +22,8 @@
     },
     "require-dev": {
         "ext-mbstring": "*",
-        "phpunit/phpunit": "^10.1"
+        "phpunit/phpunit": "^10.1",
+        "symfony/console": "^6.0|^7.0"
     },
     "config": {
         "sort-packages": true
