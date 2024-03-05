@@ -1,2 +1,2 @@
 services:
-  Dancos\Bundle\CpfCnpjBundle\Helper\CpfCnpjHelper: ~
+  Dancos\Bundle\CpfCnpjBundle\Util\CpfCnpjUtil: ~

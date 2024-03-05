@@ -4,7 +4,7 @@
            xsi:schemaLocation="http://symfony.com/schema/dic/services https://symfony.com/schema/dic/services/services-1.0.xsd">
 
     <services>
-        <service id="cpfcnpjbunle.cpfcnpjhelper" class="Dancos\Bundle\CpfCnpjBundle\Helper\CpfCnpjHelper">
+        <service id="cpfcnpjbunle.cpfcnpjutil" class="Dancos\Bundle\CpfCnpjBundle\Util\CpfCnpjUtil">
             <!-- Add any constructor arguments or method calls here -->
         </service>
     </services>
