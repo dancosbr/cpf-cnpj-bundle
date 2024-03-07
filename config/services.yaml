@@ -1,2 +1,0 @@
-services:
-  Dancos\Bundle\CpfCnpjBundle\Util\CpfCnpjUtil: ~

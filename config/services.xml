@@ -4,12 +4,11 @@
            xsi:schemaLocation="http://symfony.com/schema/dic/services https://symfony.com/schema/dic/services/services-1.0.xsd">
 
     <services>
-        <service id="cpfcnpjbunle.cpfcnpjutil" class="Dancos\Bundle\CpfCnpjBundle\Util\CpfCnpjUtil">
-            <!-- Add any constructor arguments or method calls here -->
+        <service id="cpfcnpjbunle.documentoutil" class="Dancos\Bundle\CpfCnpjBundle\Util\DocumentoUtil">
         </service>
-        <service id="cpfcnpjbunle.cpfcnpjvalidator" class="Dancos\Bundle\CpfCnpjBundle\Validator\CpfCnpjValidator">
-            <argument type="service" id="cpfcnpjbunle.cpfcnpjutil" />
+        <service id="cpfcnpjbunle.documentovalidator" class="Dancos\Bundle\CpfCnpjBundle\Validator\Constraints\DocumentoValidator" >
+            <argument type="service" id="cpfcnpjbunle.documentoutil" />
+            <tag name="validator.constraint_validator" alias="cpfcnpj.validator.documento" />
         </service>
     </services>
-
 </container>

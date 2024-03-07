@@ -4,8 +4,7 @@ declare(strict_types=1);
 
 namespace Dancos\Bundle\CpfCnpjBundle\Validator\Constraints;
 
-use Dancos\Bundle\CpfCnpjBundle\Util\CpfCnpjUtil;
-use Symfony\Component\DependencyInjection\Attribute\Autowire;
+use Dancos\Bundle\CpfCnpjBundle\Util\DocumentoUtil;
 use Symfony\Component\Validator\Constraint;
 use Symfony\Component\Validator\ConstraintValidator;
 use Symfony\Component\Validator\Exception\UnexpectedTypeException;
@@ -13,15 +12,14 @@ use Symfony\Component\Validator\Exception\UnexpectedTypeException;
 class DocumentoValidator extends ConstraintValidator
 {
     public function __construct(
-        #[Autowire()]
-        private CpfCnpjUtil $cpfCnpjHelper,
+        private DocumentoUtil $cpfCnpjHelper,
     ) {
     }
     public function validate(
         #[\SensitiveParameter]
         mixed $value,
         Constraint $constraint
-    ) {
+    ): void {
         if (null === $value || '' === $value) {
             return;
         }

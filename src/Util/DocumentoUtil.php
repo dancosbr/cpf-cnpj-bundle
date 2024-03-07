@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Dancos\Bundle\CpfCnpjBundle\Util;
 
-class CpfCnpjUtil
+class DocumentoUtil
 {
     private function getDigits(string $input): array
     {
