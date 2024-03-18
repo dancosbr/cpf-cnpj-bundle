@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Dancos\Bundle\CpfCnpjBundle\Tests\Validator\Constraints;
 
-use Symfony\Component\HttpKernel\Bundle\AbstractBundle;
+use Dancos\Bundle\CpfCnpjBundle\Util\DocumentoUtil;
 use Dancos\Bundle\CpfCnpjBundle\Validator\Constraints\Documento;
 use Symfony\Component\Validator\Test\ConstraintValidatorTestCase;
 use Dancos\Bundle\CpfCnpjBundle\Validator\Constraints\DocumentoValidator;
@@ -13,7 +13,7 @@ class DocumentoValidatorTest extends ConstraintValidatorTestCase
 {
     protected function createValidator(): DocumentoValidator
     {
-        return new DocumentoValidator();
+        return new DocumentoValidator(new DocumentoUtil());
     }
 
     /**
